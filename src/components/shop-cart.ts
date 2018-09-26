@@ -9,7 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { LitElement, html, property } from '@polymer/lit-element';
-import { connect } from 'pwa-helpers/connect-mixin.js';
+import { ReduxMixin } from 'pwa-helpers/redux-mixin.js';
 
 // This element is connected to the Redux store.
 import { store, RootState } from '../store.js';
@@ -61,11 +61,12 @@ class ShopCart extends LitElement {
   _total = 0;
 }
 
-class ConnectedShopCart extends connect(store)(ShopCart) {
-  // This is called every time something is updated in the store.
-  _stateChanged(state: RootState) {
-    this._items = cartItemsSelector(state);
-    this._total = cartTotalSelector(state);
+class ConnectedShopCart extends ReduxMixin(store)(ShopCart) {
+  mapStateToProps(state: RootState) {
+    return {
+      _items: cartItemsSelector(state),
+      _total: cartTotalSelector(state)
+    };
   }
 }
 

@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import { html, property } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
-import { connect } from 'pwa-helpers/connect-mixin.js';
+import { ReduxMixin } from 'pwa-helpers/redux-mixin.js';
 
 // This element is connected to the Redux store.
 import { store, RootState } from '../store.js';
@@ -33,7 +33,7 @@ import { SharedStyles } from './shared-styles.js';
 import { ButtonSharedStyles } from './button-shared-styles.js';
 import { addToCartIcon } from './my-icons.js';
 
-class MyView3 extends PageViewElement {
+class MyView3 extends ReduxMixin(store)(PageViewElement) {
   render() {
     const {_quantity, _error} = this;
     return html`
@@ -99,14 +99,13 @@ class MyView3 extends PageViewElement {
 
   @property({type: String})
   _error = '';
-}
 
-class ConnectedMyView3 extends connect(store)(MyView3) {
-  // This is called every time something is updated in the store.
-  _stateChanged(state: RootState) {
-    this._quantity = cartQuantitySelector(state);
-    this._error = state.shop!.error;
+  mapStateToProps(state: RootState) {
+    return {
+      _quantity: cartQuantitySelector(state),
+      _error: state.shop!.error
+    };
   }
 }
 
-window.customElements.define('my-view3', ConnectedMyView3);
+window.customElements.define('my-view3', MyView3);

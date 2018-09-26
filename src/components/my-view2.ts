@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import { html, property } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
-import { connect } from 'pwa-helpers/connect-mixin.js';
+import { ReduxMixin } from 'pwa-helpers/redux-mixin.js';
 
 // This element is connected to the Redux store.
 import { store, RootState } from '../store.js';
@@ -30,7 +30,7 @@ import './counter-element.js';
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
 
-class MyView2 extends PageViewElement {
+class MyView2 extends ReduxMixin(store)(PageViewElement) {
   render() {
     return html`
       ${SharedStyles}
@@ -61,14 +61,13 @@ class MyView2 extends PageViewElement {
 
   @property({type: Number})
   _value = 0;
-}
 
-class ConnectedMyView2 extends connect(store)(MyView2) {
-  // This is called every time something is updated in the store.
-  _stateChanged(state: RootState) {
-    this._clicks = state.counter!.clicks;
-    this._value = state.counter!.value;
+  mapStateToProps(state: RootState) {
+    return {
+      _clicks: state.counter!.clicks,
+      _value: state.counter!.value
+    };
   }
 }
 
-window.customElements.define('my-view2', ConnectedMyView2);
+window.customElements.define('my-view2', MyView2);

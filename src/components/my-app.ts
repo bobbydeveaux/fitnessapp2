@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import { LitElement, html, property, PropertyValues } from '@polymer/lit-element';
 import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
-import { connect } from 'pwa-helpers/connect-mixin.js';
+import { ReduxMixin } from 'pwa-helpers/redux-mixin.js';
 import { installMediaQueryWatcher } from 'pwa-helpers/media-query.js';
 import { installOfflineWatcher } from 'pwa-helpers/network.js';
 import { installRouter } from 'pwa-helpers/router.js';
@@ -268,12 +268,14 @@ class MyApp extends LitElement {
   }
 }
 
-class ConnectedMyApp extends connect(store)(MyApp) {
-  _stateChanged(state: RootState) {
-    this._page = state.app!.page;
-    this._offline = state.app!.offline;
-    this._snackbarOpened = state.app!.snackbarOpened;
-    this._drawerOpened = state.app!.drawerOpened;
+class ConnectedMyApp extends ReduxMixin(store)(MyApp) {
+  mapStateToProps(state: RootState) {
+    return {
+      _page: state.app!.page,
+      _offline: state.app!.offline,
+      _snackbarOpened: state.app!.snackbarOpened,
+      _drawerOpened: state.app!.drawerOpened
+    };
   }
 }
 
