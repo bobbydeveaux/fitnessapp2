@@ -10,11 +10,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
+import { connect } from 'pwa-helpers/connect-mixin.js';
+
+// This element is connected to the Redux store.
+import { store } from '../store.js';
+
+// We are lazy loading its reducer.
+import counter from '../reducers/counter.js';
+store.addReducers({
+  counter
+});
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
 
-class MyView1 extends PageViewElement {
+class MyView1 extends connect(store)(PageViewElement) {
   render() {
     return html`
       ${SharedStyles}
@@ -22,6 +32,7 @@ class MyView1 extends PageViewElement {
         <h2>Static page</h2>
         <p>This is a text-only page.</p>
         <p>It doesn't do anything other than display some static text.</p>
+        <div class="circle">${this._value}</div>
       </section>
       <section>
         <h2>Welcome</h2>
@@ -30,7 +41,19 @@ class MyView1 extends PageViewElement {
       <section>
         <p>Vestibulum at est ex. Aenean id ligula id nibh dictum laoreet. Etiam non semper erat. Pellentesque eu justo rhoncus diam vulputate facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat metus ex, vel fringilla massa tincidunt sit amet. Nunc facilisis bibendum tristique. Mauris commodo, dolor vitae dapibus fermentum, odio nibh viverra lorem, eu cursus diam turpis et sapien. Nunc suscipit tortor a ligula tincidunt, id hendrerit tellus sollicitudin.</p>
       </section>
+      
     `;
+  }
+
+  static get properties() { return {
+    // This is the data from the store.
+    _clicks: { type: Number },
+    _value: { type: Number },
+  }}
+
+  // This is called every time something is updated in the store.
+  _stateChanged(state) {
+    this._value = state.counter.value;
   }
 }
 
