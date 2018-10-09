@@ -21,7 +21,7 @@ matrix:
       provider: s3
       access_key_id: AKIAIGKXVNFPSU7YOGYQ
       secret_access_key:
-        secure: vm/VGebBkLd8BR1uyZJ/p6KUpjlq37s7wDlv0I+NcqQYuM0/Lf1nDxkVssv5oGPRyXPsWZIzqJH9fHqxhFfHcZ96uuyA9e7HP2iXs0Dx0JcISARom2g5YFBHIJdTCja9gpSLHbowRfYfEmconhAyox421wmK+Owt0j7p9VnmrvaVIamcsQSC1QNj8ACExZQDx9lOig3HPfhhqSlRKsJJz+cZAuqcvOgT36V3xGrg8tPMtHr7Cj1ipyqzzjfGkfYTkailjQJcZGHtTGVfKdKadRc4+S4As+C7+hTYoafc1V40Yfw/q/0SnYC9qPcgPh8TJOOXN8dkJr+0DlbsNa6rbjX1sK9uP3xgY6XNqaGkirEse02l1GOYZliqHR1WT/QmIvZY+kMFqQ72xkRQACXfloU2xPjX7kW0DsmDbw2UFxsOW/yISHWY35P0G6vNYA00jmu4QGZqMT64nqk1NMefKWb/UJ5V91LurOtZIjkP9Gu4zpY8GFMcbM33e2v+xUtlI99YdEwl7u4jJ//nZftz3beGAQSH6PU/q7BlTVOE9W+uItYi7wdn9Jv8hKNCp2nzQT7WOQ5vCAwHR6SaaBsxery2NXy5cDLLJFKF9CelbnZqCZd+H7uvIKrS8u1R6e3sLtAbAaMooF1QuWB/lGSYL7lEOdRCOavsSqQI1th2swI=
+        secure: r35vA1RUp+ZA9OQmKLMTsfyAzmQfAqMvi9iKbZG3WGvVpJ+NweytS4nH/2qlMno88xCcTY2QzmcHTXxJhHW7pIqp1atICf0IhKMKXZJVhbJMiDdB93jxn5XUB1tseU354K/viQ1sY2cXm8ykmcS3qH8Xl/WIA+NnzhLnjChiZmYhoFmT0vwxTckRcq4il4vgUpR830xgOJckyRWsovuszXexCCn8O3VaST7D5TUhYOXVG1Cy0RwxW3Lotayf0Fy/Bdqb0fLv137g/3uoKPUvaLPTkJ8/MGDNgqDvDx1rdKNeA3uAXGtIAU4k+Vvh+FGVTqbk+5EKBWHm13dg3ZHA+PhZs1z8y7HDGeobkd1EirC2fpbtsWCUkdhZDBqf6MShjSL4k4gxRcjX4N3zJ/m4dEZ8V7A9gxpIkN1ZcuouNQppJPyTPXJETZnSlSvA5LLqrUVf5k6L+8MJCHjM4D9QKAUMIon2Bz4rHB/fdfbAw6KXynzcBtvxai4BczOWILTnG+nVo1N/wtbG5r9+9UJ1K2WRFErZw6jSIQJ12bRPMA6bZu+QqnFjQjSfUBpWFkZ34TyO8/LqFWF9nkk5V18YFQp3PiNW9lribKw/LhxUrGeugTsQKMOabcR0fOXs+5NtU6nDO0FEru0STQc1HgewGQQ6u7Bmu4DsVC2AhfDQIEo=
       bucket: fitnessapp.tld
       region: eu-west-2
       skip_cleanup: true
@@ -30,5 +30,5 @@ matrix:
       on:
         repo: bobbydeveaux/fitnessapp2
     after_deploy:
-      - aws configure set preview.cloudfront true
-      - aws cloudfront create-invalidation --distribution-id ERXCI0CPDJBBR --paths "/*"
+    - aws configure set preview.cloudfront true
+    - aws cloudfront create-invalidation --distribution-id ERXCI0CPDJBBR --paths "/*"
