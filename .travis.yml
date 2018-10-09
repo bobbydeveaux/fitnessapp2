@@ -1,34 +1,29 @@
 language: node_js
-matrix:
-  include:
-  - node_js: '9'
-    os: osx
-    script: npm run test:integration
-  - node_js: '9'
-    sudo: required
-    os: linux
-    dist: trusty
-    addons:
-      chrome: stable
-      firefox: latest
-    before_script:
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
-    script:
-    - npm run test:unit
-    - npm run build:static
-    deploy:
-      provider: s3
-      access_key_id: AKIAIGKXVNFPSU7YOGYQ
-      secret_access_key:
-        secure: r35vA1RUp+ZA9OQmKLMTsfyAzmQfAqMvi9iKbZG3WGvVpJ+NweytS4nH/2qlMno88xCcTY2QzmcHTXxJhHW7pIqp1atICf0IhKMKXZJVhbJMiDdB93jxn5XUB1tseU354K/viQ1sY2cXm8ykmcS3qH8Xl/WIA+NnzhLnjChiZmYhoFmT0vwxTckRcq4il4vgUpR830xgOJckyRWsovuszXexCCn8O3VaST7D5TUhYOXVG1Cy0RwxW3Lotayf0Fy/Bdqb0fLv137g/3uoKPUvaLPTkJ8/MGDNgqDvDx1rdKNeA3uAXGtIAU4k+Vvh+FGVTqbk+5EKBWHm13dg3ZHA+PhZs1z8y7HDGeobkd1EirC2fpbtsWCUkdhZDBqf6MShjSL4k4gxRcjX4N3zJ/m4dEZ8V7A9gxpIkN1ZcuouNQppJPyTPXJETZnSlSvA5LLqrUVf5k6L+8MJCHjM4D9QKAUMIon2Bz4rHB/fdfbAw6KXynzcBtvxai4BczOWILTnG+nVo1N/wtbG5r9+9UJ1K2WRFErZw6jSIQJ12bRPMA6bZu+QqnFjQjSfUBpWFkZ34TyO8/LqFWF9nkk5V18YFQp3PiNW9lribKw/LhxUrGeugTsQKMOabcR0fOXs+5NtU6nDO0FEru0STQc1HgewGQQ6u7Bmu4DsVC2AhfDQIEo=
-      bucket: fitnessapp.tld
-      region: eu-west-2
-      skip_cleanup: true
-      local-dir: build
-      acl: public_read
-      on:
-        repo: bobbydeveaux/fitnessapp2
-    after_deploy:
-    - aws configure set preview.cloudfront true
-    - aws cloudfront create-invalidation --distribution-id ERXCI0CPDJBBR --paths "/*"
+node_js: '9'
+sudo: required
+os: linux
+dist: trusty
+addons:
+  chrome: stable
+  firefox: latest
+before_script:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+script:
+- npm run test:unit
+- npm run build:static
+deploy:
+  provider: s3
+  access_key_id: AKIAIGKXVNFPSU7YOGYQ
+  secret_access_key:
+    secure: wgEG5cjWAhmvQToSgLIVqJegsO0CJVosADsVYc59JDD74oxvqPMa4pZzFfHnvbnoh3Es820S4oHv6nzAKUH87yL282pcts8MORbncwW4RaWijrSvAYTSyJrhwSeC03U5h3Ok9Nmze7zw3X3UBYPTJk5KIsEzAB0Tig1B7x2IKaL3H2e6+MbELhCpOPqN0IgdLlwZ1VyurhEkcOqcrsIUNTxhKrovbZvhr0l3LQxwH/gENoQ6wizuxNPnEAceaeAO5zfSSGOMDEigbxtZQWasGaBrgU80tUCSBmcd9JFO0+BTQCUmH457XXSgEjGmkzPib7bdWcZdEIV+YYa9Awofgpk9R6cf5YS9CBeWw5qzFG9Irp19yjMiG9Oqpi3I5nFVUbHVCAZXVTWSdaNWEz07oT5D+Uv5c9mqMylZj5uCFSezZZFk4HFE5+6E4RaEY8gjYwqnlnP4k4ZubT6dvcLlSZ4eY3wldQCy8/V+y1LNcESUMcFHyfAVHd9bpbOEWPhD69qnOtr7RnLaluo71yrfff9fYaPudFlDXgvMs4j4yfCXCHA9pROf2wmOJ6mDSl3q8vsLvpCw6LJurlWDuO0jXMlKHEcZmduUl4chgmYaLcsqzwoRVlZQGsmwHxz1ClsYCDEi+8Lp1NbaEdYpgDdltcv1PVAcSLcrjnsHb1qHzdg=
+  bucket: fitnessapp.tld
+  region: eu-west-2
+  skip_cleanup: true
+  local-dir: build
+  acl: public_read
+  on:
+    repo: bobbydeveaux/fitnessapp2
+after_deploy:
+- aws configure set preview.cloudfront true
+- aws cloudfront create-invalidation --distribution-id ERXCI0CPDJBBR --paths "/*"
