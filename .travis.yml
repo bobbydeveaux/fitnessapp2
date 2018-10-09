@@ -20,7 +20,7 @@ deploy:
   bucket: fitnessapp.tld
   region: eu-west-2
   skip_cleanup: true
-  local-dir: build
+  local-dir: build/es6-bundled
   acl: public_read
   on:
     repo: bobbydeveaux/fitnessapp2
