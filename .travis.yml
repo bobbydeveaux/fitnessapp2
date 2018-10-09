@@ -26,4 +26,4 @@ deploy:
     repo: bobbydeveaux/fitnessapp2
 after_deploy:
 - aws configure set preview.cloudfront true
-- aws cloudfront create-invalidation --distribution-id ERXCI0CPDJBBR --paths "/*"
+- aws cloudfront create-invalidation --distribution-id E2NJ8TIWQ1HARF --paths "/*"
