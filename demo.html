@@ -8,6 +8,19 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <style type="text/css">
+    	@mixin hover() {
+			  .md-no-touch &:hover {
+			    @content;
+			  }
+			}
+
+			.md-button {
+			  @include hover {
+			    // hover styles
+			  }
+			}
+		</style>
     <title>Macro Calculator</title>
   </head>
   <body>
@@ -105,7 +118,7 @@
 						  All are within safe parameters off caloric control.
 						</p>
 				  </div>
-				  <button id="calculate" type="button" class="btn btn-primary btn-lg">Calculate</button>
+				  <button id="calculate" type="button" class="btn btn-primary btn-lg md-button">Calculate</button>
 				</form>
 			</div>
 			<div id="results">
