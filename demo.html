@@ -193,16 +193,6 @@
 	    		var bia = $('#inputBia').val() ? $('#inputBia').val() : 0;
 	    		var hip = $('#inputHip').val() ? $('#inputHip').val() : 0;
 
-	    		console.log(height);
-	    		console.log(waist);
-	    		console.log(mass);
-	    		console.log(neck);
-	    		console.log(activity);
-	    		console.log(lifestyle);
-	    		console.log(deficit);
-	    		console.log(bia);
-	    		console.log(hip);
-
 	    		var data = { 
 				    height: height, 
 				    waist: waist, 
@@ -216,15 +206,12 @@
 				  }
 
 				  var shareUrl = $.param(data);
-				  console.log(shareUrl);
 
 	    		$.ajax({
 					  url: "https://2gubl4qlic.execute-api.eu-west-2.amazonaws.com/v1/stats3",
 					  type: "GET",
 					  data: data,
 					  success: function(response) {
-					    console.log(response)
-					    
 					    txtResults = resultsTemplate.replace(/{calories}/, response.calcs.caloriegoal);
 					    txtResults = txtResults.replace(/{protein}/, response.calcs.proteingoal);
 					    txtResults = txtResults.replace(/{carbs}/, response.calcs.carbgoal);
