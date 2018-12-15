@@ -9,6 +9,7 @@
     "node_modules/@webcomponents/webcomponentsjs/**",
     "push-manifest.json",
     "demo.html",
+    "demo2.html",
     "signup.html"
   ],
   "builds": [
