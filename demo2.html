@@ -15,100 +15,100 @@
     
 
     <div class="container">
-      <h1>Macro Calculation - Demo</h1>
-      <div style="padding:20px">
-        <form>
-          <div class="input-field">
-            <label for="inputHeight">Height (inches)</label>
-            <input type="number" pattern="\d*" id="inputHeight" class="form-control form-control-lg" aria-describedby="heightHelpBlock">
-            <!--p id="heightHelpBlock" class="form-text text-muted">
-              1ft = 12 inches. 5ft = 60 inches. 6ft = 72 inches One day we will allow metric too.. ;-)
-            </p-->
-          </div>
-          <div class="input-field">
-            <label for="inputWaist">Waist (inches)</label>
-            <input type="number" pattern="\d*" id="inputWaist" class="form-control form-control-lg" aria-describedby="waistHelpBlock">
-            <!--p id="waistHelpBlock" class="form-text text-muted">
-              Enter your measurement around the belly button, in inches.
-            </p-->
-          </div>
-           <div class="input-field">
-            <label for="inputNeck">Neck (inches)</label>
-            <input type="number" pattern="\d*" id="inputNeck" class="form-control form-control-lg" aria-describedby="neckHelpBlock">
-            <!--p id="neckHelpBlock" class="form-text text-muted">
-              Enter the largest measurement around your neck!
-            </p-->
-          </div>
-          <div class="input-field">
-            <label for="inputWeight">Weight (kg)</label>
-            <input type="number" pattern="\d*" id="inputWeight" class="form-control form-control-lg" aria-describedby="weightHelpBlock">
-            <!--p id="weightHelpBlock" class="form-text text-muted">
-              Enter your weight in kg. 1st =  6.35kg,
-            </p-->
-          </div>
-          <div class="input-field">
-            <label for="inputHip">Hip Measurement (inches) - Females only!</label>
-            <input type="number" pattern="\d*" id="inputHip" class="form-control form-control-lg"  aria-describedby="hipHelpBlock">
-            <!--p id="hipHelpBlock" class="form-text text-muted">
-              If your gender at birth was male, leave this blank.
-            </p-->
-          </div>
-          <div class="input-field">
-            <label for="inputBia">Fat Percentage (%)</label>
-            <input type="number" pattern="\d*" id="inputBia" class="form-control form-control-lg" aria-describedby="biaHelpBlock">
-            <!--p id="biaHelpBlock" class="form-text text-muted">
-              We will calculate your approx fat percentage anyway, but if you've had a reading done, enter it here. Otherwise, leave it blank.
-            </p-->
-          </div>
-          <div class="input-field">
-            <select class="form-control form-control-lg" id="inputActivity" aria-describedby="activityHelpBlock">
-              <option value="low">Sedentary</option>
-              <option value="light">Lightly Active</option>
-              <option value="moderate">Moderately Active</option>
-              <option value="very">Very Active</option>
-              <option value="extreme">Extemely Active</option>
-            </select>
-            <label for="inputActivity">How active are you?</label>
-            <p id="activityHelpBlock" class="form-text text-muted">
-              Sedentary - little or no exercise, desk job<br/>
-              Lightly active - light exercise/ sports 1-3 days/week<br/>
-              Moderately active - BMR x 1.55 (moderate exercise/ sports 6-7 days/week<br/>
-              Very active - hard exercise every day, or exercising 2 xs/day<br/>
-              Extra active - hard exercise 2 or more times per day, or training for marathon, or triathlon, etc.
-            </p>
-          </div>
-          <div class="input-field">
-            <select class="form-control form-control-lg" id="inputLifestyle" aria-describedby="lifestyleHelpBlock">
-              <option value="lchf">LCHF - Low Carb, High Fat (keto-style)</option>
-              <option value="hclf">HCLF - High Carb, Low Fat</option>
-              <option value="psmf">PSMF - Protein Sparing Modified Fast</option>
-              <option value="balanced">Balanced</option>
-              <option value="gains">Super Carb</option>
-            </select>
-            <label for="inputLifestyle">What's your diet preference?</label>
-            <p id="lifestyleHelpBlock" class="form-text text-muted">
-              Apart from 'super carb' & 'Protein Sparing', all diets assume 2.2g protein per kg body weight. Thats the same as 1g / 1lb of body weight - standard practice. <br/>'Super carb' is for those bulking, and want to maximise carb intake, which reduces protein to 0.8g per lb of body weight.<br />
-              'PSMF' - This is only for those that wish to undertake a temporary controlled fast and minimise muscle loss. Doctor Supervision recommended.
-            </p>
-          </div>
-          <div class="input-field">
-            <select class="form-control form-control-lg" id="inputDeficit" aria-describedby="deficitHelpBlock">
-              <option value="leangains">Lean Gains</option>
-              <option value="maintain">Maintenance</option>
-              <option value="slow">Controlled, slow fat loss</option>
-              <option value="easy">Steady fat loss</option>
-              <option value="medium">Moderate fat loss</option>
-              <option value="hard">Help me lose a lot of fat, please - I can do this!</option>
-            </select>
-            <label for="inputDeficit">Are looking to make lean gains, or lose fat?</label>
-            <p id="lifestyleHelpBlock" class="form-text text-muted">
-              Maintenance should allow you to stay the same weight.<br />
-              All are within safe parameters of caloric control.
-            </p>
-          </div>
-          <button id="calculate" type="button" class="btn btn-primary btn-lg md-button">Calculate</button>
-        </form>
-      </div>
+      <h3>Macro Calculation - Demo</h3>
+      
+      <form>
+        <div class="input-field">
+          <label for="inputHeight">Height (inches) - 1ft = 12 inches. 5ft = 60 inches. 6ft = 72 inches</label>
+          <input type="number" pattern="\d*" id="inputHeight" class="form-control form-control-lg" aria-describedby="heightHelpBlock">
+          <!--p id="heightHelpBlock" class="form-text text-muted">
+            1ft = 12 inches. 5ft = 60 inches. 6ft = 72 inches One day we will allow metric too.. ;-)
+          </p-->
+        </div>
+        <div class="input-field">
+          <label for="inputWaist">Waist (inches) - Measurement around the belly button</label>
+          <input type="number" pattern="\d*" id="inputWaist" class="form-control form-control-lg" aria-describedby="waistHelpBlock">
+          <!--p id="waistHelpBlock" class="form-text text-muted">
+            Enter your measurement around the belly button, in inches.
+          </p-->
+        </div>
+         <div class="input-field">
+          <label for="inputNeck">Neck (inches)- Enter the largest measurement around your neck!</label>
+          <input type="number" pattern="\d*" id="inputNeck" class="form-control form-control-lg" aria-describedby="neckHelpBlock">
+          <!--p id="neckHelpBlock" class="form-text text-muted">
+            Enter the largest measurement around your neck!
+          </p-->
+        </div>
+        <div class="input-field">
+          <label for="inputWeight">Weight (kg) - Enter your weight in kg. 1st =  6.35kg</label>
+          <input type="number" pattern="\d*" id="inputWeight" class="form-control form-control-lg" aria-describedby="weightHelpBlock">
+          <!--p id="weightHelpBlock" class="form-text text-muted">
+            Enter your weight in kg. 1st =  6.35kg,
+          </p-->
+        </div>
+        <div class="input-field">
+          <label for="inputHip">Hip Measurement (inches) - Females only!</label>
+          <input type="number" pattern="\d*" id="inputHip" class="form-control form-control-lg"  aria-describedby="hipHelpBlock">
+          <!--p id="hipHelpBlock" class="form-text text-muted">
+            If your gender at birth was male, leave this blank.
+          </p-->
+        </div>
+        <div class="input-field">
+          <label for="inputBia">Fat Percentage (%) - If you know it!</label>
+          <input type="number" pattern="\d*" id="inputBia" class="form-control form-control-lg" aria-describedby="biaHelpBlock">
+          <!--p id="biaHelpBlock" class="form-text text-muted">
+            We will calculate your approx fat percentage anyway, but if you've had a reading done, enter it here. Otherwise, leave it blank.
+          </p-->
+        </div>
+        <div class="input-field">
+          <select class="form-control form-control-lg" id="inputActivity" aria-describedby="activityHelpBlock">
+            <option value="low">Sedentary</option>
+            <option value="light">Lightly Active</option>
+            <option value="moderate">Moderately Active</option>
+            <option value="very">Very Active</option>
+            <option value="extreme">Extemely Active</option>
+          </select>
+          <label for="inputActivity">How active are you?</label>
+          <p id="activityHelpBlock" class="form-text text-muted">
+            Sedentary - little or no exercise, desk job<br/>
+            Lightly active - light exercise/ sports 1-3 days/week<br/>
+            Moderately active - BMR x 1.55 (moderate exercise/ sports 6-7 days/week<br/>
+            Very active - hard exercise every day, or exercising 2 xs/day<br/>
+            Extra active - hard exercise 2 or more times per day, or training for marathon, or triathlon, etc.
+          </p>
+        </div>
+        <div class="input-field">
+          <select class="form-control form-control-lg" id="inputLifestyle" aria-describedby="lifestyleHelpBlock">
+            <option value="lchf">LCHF - Low Carb, High Fat (keto-style)</option>
+            <option value="hclf">HCLF - High Carb, Low Fat</option>
+            <option value="psmf">PSMF - Protein Sparing Modified Fast</option>
+            <option value="balanced">Balanced</option>
+            <option value="gains">Super Carb</option>
+          </select>
+          <label for="inputLifestyle">What's your diet preference?</label>
+          <p id="lifestyleHelpBlock" class="form-text text-muted">
+            Apart from 'super carb' & 'Protein Sparing', all diets assume 2.2g protein per kg body weight. Thats the same as 1g / 1lb of body weight - standard practice. <br/>'Super carb' is for those bulking, and want to maximise carb intake, which reduces protein to 0.8g per lb of body weight.<br />
+            'PSMF' - This is only for those that wish to undertake a temporary controlled fast and minimise muscle loss. Doctor Supervision recommended.
+          </p>
+        </div>
+        <div class="input-field">
+          <select class="form-control form-control-lg" id="inputDeficit" aria-describedby="deficitHelpBlock">
+            <option value="leangains">Lean Gains</option>
+            <option value="maintain">Maintenance</option>
+            <option value="slow">Controlled, slow fat loss</option>
+            <option value="easy">Steady fat loss</option>
+            <option value="medium">Moderate fat loss</option>
+            <option value="hard">Help me lose a lot of fat, please - I can do this!</option>
+          </select>
+          <label for="inputDeficit">Are looking to make lean gains, or lose fat?</label>
+          <p id="lifestyleHelpBlock" class="form-text text-muted">
+            Maintenance should allow you to stay the same weight.<br />
+            All are within safe parameters of caloric control.
+          </p>
+        </div>
+        <button id="calculate" type="button" class="btn btn-primary btn-lg md-button">Calculate</button>
+      </form>
+      
       <div id="results">
         
       </div>
@@ -136,7 +136,7 @@
           return vars;
       }
 
-      var resultsTemplate = '<h2>Results</h2><p>Based on your measurements & goals, you should aim to eat around <strong>{calories}kcal</strong>, made up of <strong>{protein}g protein</strong>, <strong>{carbs}g carbs</strong> and <strong>{fat}g fat</strong>. As a rule of thumb,  don\'t stress too much about the carbs and fat; just make sure you hit the protein &amp; calorie goals!</p><p>We calculated that your basal metabolic rate (BMR) is <strong>{bmr}kcal</strong> - this is the total amount of calories you would burn each day without even getting out of bed!</p><p>Based on your activity level, you have a Total Daily Energy Expenditure (TDEE) of around <strong>{tdee}kcal</strong>.</p><p>Your fat percentage, using the US Navy formula is approx. <strong>{navyfat}%</strong></p><p>Share your result: <a href="/demo.html?{shareurl}">Copy Link</a></p>';
+      var resultsTemplate = '<h2>Results</h2><p>Based on your measurements & goals, you should aim to eat around <strong>{calories}kcal</strong>, made up of <strong>{protein}g protein</strong>, <strong>{carbs}g carbs</strong> and <strong>{fat}g fat</strong>. As a rule of thumb,  don\'t stress too much about the carbs and fat; just make sure you hit the protein &amp; calorie goals!</p><p>We calculated that your basal metabolic rate (BMR) is <strong>{bmr}kcal</strong> - this is the total amount of calories you would burn each day without even getting out of bed!</p><p>Based on your activity level, you have a Total Daily Energy Expenditure (TDEE) of around <strong>{tdee}kcal</strong>.</p><p>Your fat percentage, using the US Navy formula is approx. <strong>{navyfat}%</strong></p>';
 
       $(function() {
 
@@ -171,6 +171,8 @@
           $('#inputHip').val(qs['hip']);
         }
 
+        M.updateTextFields();
+
         $('#calculate').click(function(){
 
           var height = $('#inputHeight').val() ? $('#inputHeight').val() : 0;
@@ -197,6 +199,8 @@
 
           var shareUrl = $.param(data);
 
+          window.history.pushState("", document.title, '?' + shareUrl);
+
           $.ajax({
             url: "https://2gubl4qlic.execute-api.eu-west-2.amazonaws.com/v1/stats3",
             type: "GET",
@@ -209,7 +213,6 @@
               txtResults = txtResults.replace(/{navyfat}/, response.calcs.navyfat.toFixed(2));
               txtResults = txtResults.replace(/{bmr}/, response.calcs.bmr);
               txtResults = txtResults.replace(/{tdee}/, response.calcs.tdee);
-              txtResults = txtResults.replace(/{shareurl}/, shareUrl);
               
               $('#results').html(txtResults);
             }
