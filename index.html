@@ -1,116 +1,288 @@
-<!--
-@license
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title>Fitness App</title>
-    <meta name="generator" content="PWA Starter Kit">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Fitness App description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!--
-      The `<base>` tag below is present to support two advanced deployment options:
-      1) Differential serving. 2) Serving from a non-root path.
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/>
 
-      Instead of manually editing the `<base>` tag yourself, you should generally either:
-      a) Add a `basePath` property to the build configuration in your `polymer.json`.
-      b) Use the `--base-path` command-line option for `polymer build`.
-    -->
-    <base href="/">
-
-    <link rel="icon" href="images/favicon.ico">
-
-    <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="manifest.json">
-
-    <!-- See https://goo.gl/qRE0vM -->
-    <meta name="theme-color" content="#3f51b5">
-
-    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Fitness App">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Fitness App">
-
-    <!-- Homescreen icons -->
-    <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
-
-    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#3f51b5">
-    <meta name="msapplication-tap-highlight" content="no">
-
-    <!-- Default twitter cards -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@username">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="my-app">
-    <meta property="og:image" content="images/manifest/icon-144x144.png" />
-
-    <!-- Performance tip: hint to the browser to start the handshake for the fonts site -->
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <script>
-      // Load and register pre-caching Service Worker
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('service-worker.js', {
-            scope: '/',
-          });
-        });
+    <style type="text/css">
+      
+      nav ul a,
+      nav .brand-logo {
+        color: #444;
       }
 
-      // Redux assumes `process.env.NODE_ENV` exists in the ES module build.
-      // https://github.com/reactjs/redux/issues/2907
-      window.process = { env: { NODE_ENV: 'production' } };
-    </script>
-
-    <!-- Add any global styles for body, document, etc. -->
-    <style>
-      @font-face {
-        font-family: 'Pacifico';
-        font-style: normal;
-        font-weight: 400;
-        src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://fonts.gstatic.com/s/pacifico/v12/Q_Z9mv4hySLTMoMjnk_rCXYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
-        /* THe browser draws the text immediately in the fallback font if the font
-           isn't loaded, then swaps it with the webfont when it eventually loads
-           See: https://developers.google.com/web/updates/2016/02/font-display
-        */
-        font-display: swap;
+      p {
+        line-height: 2rem;
       }
-      body {
+
+      .sidenav-trigger {
+        color: #26a69a;
+      }
+
+      @media only screen and (max-width : 992px) {
+        #index-banner .section {
+          top: 10%;
+        }
+      }
+
+      @media only screen and (max-width : 600px) {
+        #index-banner .section {
+          top: 0;
+        }
+      }
+
+      .icon-block {
+        padding: 0 15px;
+      }
+      .icon-block .material-icons {
+        font-size: inherit;
+      }
+
+      footer.page-footer {
         margin: 0;
-        /* This is a font-stack that tries to use the system-default sans-serifs first */
-        font-family: Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-        line-height: 1.5;
-        min-height: 100vh;
-        -webkit-font-smoothing: antialiased;
       }
     </style>
+    <title>Macro Calculator - MealFit</title>
   </head>
   <body>
-    <my-app appTitle="fitness app"></my-app>
-    <noscript>
-      Please enable JavaScript to view this website.
-    </noscript>
-    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
-    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <!-- Built with love using PWA Starter Kit -->
-    <script type="module" src="src/components/my-app.js" crossorigin></script>
+    
+    <nav class="white" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">MealFit</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/login.html">Login</a></li>
+          <li><a href="/signup.html">Signup</a></li>
+          <li><a href="/">Calculator</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="sidenav">
+          <li><a href="/login.html">Login</a></li>
+          <li><a href="/signup.html">Signup</a></li>
+          <li><a href="/">Calculator</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h3>MealFit - Calculator</h3>
+      
+      <form>
+        <div class="input-field">
+          <label for="inputHeight">Height (inches) - 1ft = 12 inches. 5ft = 60 inches. 6ft = 72 inches</label>
+          <input type="number" pattern="\d*" id="inputHeight" class="form-control form-control-lg" aria-describedby="heightHelpBlock">
+          <!--p id="heightHelpBlock" class="form-text text-muted">
+            1ft = 12 inches. 5ft = 60 inches. 6ft = 72 inches One day we will allow metric too.. ;-)
+          </p-->
+        </div>
+        <div class="input-field">
+          <label for="inputWaist">Waist (inches) - Measurement around the belly button</label>
+          <input type="number" pattern="\d*" id="inputWaist" class="form-control form-control-lg" aria-describedby="waistHelpBlock">
+          <!--p id="waistHelpBlock" class="form-text text-muted">
+            Enter your measurement around the belly button, in inches.
+          </p-->
+        </div>
+         <div class="input-field">
+          <label for="inputNeck">Neck (inches)- Enter the largest measurement around your neck!</label>
+          <input type="number" pattern="\d*" id="inputNeck" class="form-control form-control-lg" aria-describedby="neckHelpBlock">
+          <!--p id="neckHelpBlock" class="form-text text-muted">
+            Enter the largest measurement around your neck!
+          </p-->
+        </div>
+        <div class="input-field">
+          <label for="inputWeight">Weight (kg) - Enter your weight in kg. 1st =  6.35kg</label>
+          <input type="number" pattern="\d*" id="inputWeight" class="form-control form-control-lg" aria-describedby="weightHelpBlock">
+          <!--p id="weightHelpBlock" class="form-text text-muted">
+            Enter your weight in kg. 1st =  6.35kg,
+          </p-->
+        </div>
+        <div class="input-field">
+          <label for="inputHip">Hip Measurement (inches) - Females only!</label>
+          <input type="number" pattern="\d*" id="inputHip" class="form-control form-control-lg"  aria-describedby="hipHelpBlock">
+          <!--p id="hipHelpBlock" class="form-text text-muted">
+            If your gender at birth was male, leave this blank.
+          </p-->
+        </div>
+        <div class="input-field">
+          <label for="inputBia">Fat Percentage (%) - If you know it!</label>
+          <input type="number" pattern="\d*" id="inputBia" class="form-control form-control-lg" aria-describedby="biaHelpBlock">
+          <!--p id="biaHelpBlock" class="form-text text-muted">
+            We will calculate your approx fat percentage anyway, but if you've had a reading done, enter it here. Otherwise, leave it blank.
+          </p-->
+        </div>
+        <div class="input-field">
+          <select class="form-control form-control-lg" id="inputActivity" aria-describedby="activityHelpBlock">
+            <option value="low">Sedentary</option>
+            <option value="light">Lightly Active</option>
+            <option value="moderate">Moderately Active</option>
+            <option value="very">Very Active</option>
+            <option value="extreme">Extemely Active</option>
+          </select>
+          <label for="inputActivity">How active are you?</label>
+          <p id="activityHelpBlock" class="form-text text-muted">
+            Sedentary - little or no exercise, desk job<br/>
+            Lightly active - light exercise/ sports 1-3 days/week<br/>
+            Moderately active - BMR x 1.55 (moderate exercise/ sports 6-7 days/week<br/>
+            Very active - hard exercise every day, or exercising 2 xs/day<br/>
+            Extra active - hard exercise 2 or more times per day, or training for marathon, or triathlon, etc.
+          </p>
+        </div>
+        <div class="input-field">
+          <select class="form-control form-control-lg" id="inputLifestyle" aria-describedby="lifestyleHelpBlock">
+            <option value="lchf">LCHF - Low Carb, High Fat (keto-style)</option>
+            <option value="hclf">HCLF - High Carb, Low Fat</option>
+            <option value="psmf">PSMF - Protein Sparing Modified Fast</option>
+            <option value="balanced">Balanced</option>
+            <option value="gains">Super Carb</option>
+          </select>
+          <label for="inputLifestyle">What's your diet preference?</label>
+          <p id="lifestyleHelpBlock" class="form-text text-muted">
+            Apart from 'super carb' & 'Protein Sparing', all diets assume 2.2g protein per kg body weight. Thats the same as 1g / 1lb of body weight - standard practice. <br/>'Super carb' is for those bulking, and want to maximise carb intake, which reduces protein to 0.8g per lb of body weight.<br />
+            'PSMF' - This is only for those that wish to undertake a temporary controlled fast and minimise muscle loss. Doctor Supervision recommended.
+          </p>
+        </div>
+        <div class="input-field">
+          <select class="form-control form-control-lg" id="inputDeficit" aria-describedby="deficitHelpBlock">
+            <option value="leangains">Lean Gains</option>
+            <option value="maintain">Maintenance</option>
+            <option value="slow">Controlled, slow fat loss</option>
+            <option value="easy">Steady fat loss</option>
+            <option value="medium">Moderate fat loss</option>
+            <option value="hard">Help me lose a lot of fat, please - I can do this!</option>
+          </select>
+          <label for="inputDeficit">Are looking to make lean gains, or lose fat?</label>
+          <p id="lifestyleHelpBlock" class="form-text text-muted">
+            Maintenance should allow you to stay the same weight.<br />
+            All are within safe parameters of caloric control.
+          </p>
+        </div>
+        <button id="calculate" type="button" class="btn btn-primary btn-lg md-button">Calculate</button>
+      </form>
+      
+      <div id="results">
+        
+      </div>
+      <br />
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+
+      // Read a page's GET URL variables and return them as an associative array.
+      function getUrlVars()
+      {
+          var vars = [], hash;
+          var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+          for(var i = 0; i < hashes.length; i++)
+          {
+              hash = hashes[i].split('=');
+              vars[hash[0]] = hash[1];
+          }
+          return vars;
+      }
+
+      var resultsTemplate = '<h2>Results</h2><p>Based on your measurements & goals, you should aim to eat around <strong>{calories}kcal</strong>, made up of <strong>{protein}g protein</strong>, <strong>{carbs}g carbs</strong> and <strong>{fat}g fat</strong>. As a rule of thumb,  don\'t stress too much about the carbs and fat; just make sure you hit the protein &amp; calorie goals!</p><p>We calculated that your basal metabolic rate (BMR) is <strong>{bmr}kcal</strong> - this is the total amount of calories you would burn each day without even getting out of bed!</p><p>Based on your activity level, you have a Total Daily Energy Expenditure (TDEE) of around <strong>{tdee}kcal</strong>.</p><p>Your fat percentage, using the US Navy formula is approx. <strong>{navyfat}%</strong></p>';
+
+      $(function() {
+
+        $('.sidenav').sidenav();
+        
+        $('select').formSelect();
+
+        var qs = getUrlVars();
+        if (qs['height']) {
+          $('#inputHeight').val(qs['height']);
+        }
+        if (qs['waist']) {
+          $('#inputWaist').val(qs['waist']);
+        }
+        if (qs['mass']) {
+          $('#inputWeight').val(qs['mass']);
+        }
+        if (qs['neck']) {
+          $('#inputNeck').val(qs['neck']);
+        }
+        if (qs['activity']) {
+          $('#inputActivity').val(qs['activity']);
+        }
+        if (qs['lifestyle']) {
+          $('#inputLifestyle').val(qs['lifestyle']);
+        }
+        if (qs['deficit']) {
+          $('#inputDeficit').val(qs['deficit']);
+        }
+        if (qs['bia']) {
+          $('#inputBia').val(qs['bia']);
+        }
+        if (qs['hip']) {
+          $('#inputHip').val(qs['hip']);
+        }
+
+        M.updateTextFields();
+
+        $('#calculate').click(function(){
+
+          var height = $('#inputHeight').val() ? $('#inputHeight').val() : 0;
+          var waist = $('#inputWaist').val() ? $('#inputWaist').val() : 0;
+          var mass = $('#inputWeight').val() ? $('#inputWeight').val() : 0;
+          var neck = $('#inputNeck').val() ? $('#inputNeck').val() : 0;
+          var activity = $('#inputActivity').val();
+          var lifestyle = $('#inputLifestyle').val();
+          var deficit = $('#inputDeficit').val();
+          var bia = $('#inputBia').val() ? $('#inputBia').val() : 0;
+          var hip = $('#inputHip').val() ? $('#inputHip').val() : 0;
+
+          var data = { 
+            height: height, 
+            waist: waist, 
+            mass: mass, 
+            neck: neck, 
+            activity: activity, 
+            lifestyle: lifestyle, 
+            deficit: deficit, 
+            bia: bia,
+            hip: hip
+          }
+
+          var shareUrl = $.param(data);
+
+          window.history.pushState("", document.title, '?' + shareUrl);
+
+          $.ajax({
+            url: "https://2gubl4qlic.execute-api.eu-west-2.amazonaws.com/v1/stats3",
+            type: "GET",
+            data: data,
+            success: function(response) {
+              txtResults = resultsTemplate.replace(/{calories}/, response.calcs.caloriegoal);
+              txtResults = txtResults.replace(/{protein}/, response.calcs.proteingoal);
+              txtResults = txtResults.replace(/{carbs}/, response.calcs.carbgoal);
+              txtResults = txtResults.replace(/{fat}/, response.calcs.fatgoal);
+              txtResults = txtResults.replace(/{navyfat}/, response.calcs.navyfat.toFixed(2));
+              txtResults = txtResults.replace(/{bmr}/, response.calcs.bmr);
+              txtResults = txtResults.replace(/{tdee}/, response.calcs.tdee);
+              
+              $('#results').html(txtResults);
+            }
+          });
+        });
+
+        
+      });
+      
+    </script>
+
   </body>
 </html>
