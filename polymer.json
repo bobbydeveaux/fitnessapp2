@@ -11,7 +11,8 @@
     "demo.html",
     "demo2.html",
     "signup.html",
-    "login.html"
+    "login.html",
+    "index.html"
   ],
   "builds": [
     {
